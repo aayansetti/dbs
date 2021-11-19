@@ -1,0 +1,95 @@
+*{
+    /* font-family: 'Nunito', sans-serif; */
+    margin:0; padding:0;
+    box-sizing: border-box;
+    text-decoration: none;
+    outline: none; border:none;
+    text-transform: capitalize;
+    transition: all .2s linear;
+}
+
+
+
+
+
+
+header{
+   background-color: rgb(255, 0, 0);
+   color: #fff;
+   position: fixed;
+   display: flex;
+   width: 100%;
+   top: 0;
+   border-bottom: solid 5px black;
+   z-index: 1;
+}
+
+header .logo{
+    margin-left: 1rem;
+    padding-top: .3rem;
+}
+
+header .logo h1{
+    float: left;
+    color: black;
+}
+
+header .logo h2{
+    float: right;
+    padding-left: 0.8rem;
+    padding-top: 0.4rem;
+}
+
+header .date{
+    margin-left: 65rem;
+    margin-top: 0.9rem;
+}
+
+.user h1{
+    margin-bottom: 2rem;
+    text-align: center;
+}
+
+.user{
+   
+    margin: 5rem;
+    text-align: left;
+
+}
+
+.user  .input{
+    padding: 8px 8px;
+    text-align: left;
+    margin-bottom: .2rem;
+    
+    
+
+}
+
+.user  .inputbox{
+    padding: 12px 20px;
+    width: 25%;
+    margin: 8px 0;
+    border: 1px solid #ccc;
+    border-radius: 10px;
+    box-sizing: border-box;
+    
+   
+}
+
+input[type="Submit"]{
+    color: white;
+    background-color: red;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 5rem;
+}
+input[type="Submit"]:hover{
+    background-color: black;
+}
+
+.usermargin{
+    margin: 10rem;
+}

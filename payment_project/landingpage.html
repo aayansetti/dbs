@@ -1,0 +1,68 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Bank website</title>
+    <!-- font awesome link -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- custom styling -->
+    <link rel="stylesheet"
+    href="./css/style.css"
+    />
+</head>
+<body>
+    <header>
+
+            <div class="logo">
+                <h1>
+                    <i class="fas fa-piggy-bank"></i>
+                </h1>
+                <h2>E-pay</h2>
+            </div>
+            <p class="date" id="date"></p>
+            <script>
+                n= new Date();
+                y= n.getFullYear();
+                m= n.getMonth();
+                d= n.getDate();
+
+                document.getElementById("date").innerHTML= m+1 + "/" + d + "/" +y;
+            </script>
+    </header>
+    
+    <div class = "user">
+    <h1>Enter User Details</h1>
+       <form action="userinfo.html"> 
+            <div class="input">
+               Select the date<br>
+            </div>
+            <div class="inputbox">
+               
+                <input type ="date">
+            </div><br>
+            <div class="input">
+                Account number<br>
+             </div>
+             <div class="inputbox">
+                
+                 <input type ="number">
+             </div>
+             <input type="Submit" value="Submit">
+            
+
+        </form>
+        
+       
+        
+    </div>
+
+    
+    
+    
+    
+</body>
+</html>
