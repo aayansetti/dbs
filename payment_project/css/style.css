@@ -93,3 +93,16 @@ input[type="Submit"]:hover{
 .usermargin{
     margin: 10rem;
 }
+
+.transfer{
+    color: white;
+    background-color: red;
+    padding: 12px 20px;
+    margin: 8px 0;
+    border-radius: 10px;
+    cursor: pointer;
+    margin-left: 5rem;
+}
+.transfer:hover{
+    background-color: black;
+}

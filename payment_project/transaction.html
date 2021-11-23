@@ -1,0 +1,84 @@
+<!DOCTYPE html>
+<html lang="en">
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Transaction</title>
+    <!-- font awesome link -->
+    <link rel="stylesheet" 
+    href="https://cdnjs.cloudflare.com/ajax/libs/font-awesome/5.15.4/css/all.min.css"
+    />
+    <!-- custom styling -->
+    <link rel="stylesheet"
+    href="./css/style.css"
+    />
+</head>
+<body>
+
+    <header>
+
+        <div class="logo">
+            <h1>
+                <i class="fas fa-piggy-bank"></i>
+            </h1>
+            <h2>E-pay</h2>
+        </div>
+        <p class="date" id="date"></p>
+        <script>
+            n= new Date();
+            y= n.getFullYear();
+            m= n.getMonth();
+            d= n.getDate();
+
+            document.getElementById("date").innerHTML= m+1 + "/" + d + "/" +y;
+        </script>
+</header>
+
+<div class = "user">
+<h1>Enter User Details</h1>
+   <form action=""> 
+    <label>transfer Type<br> <input class="inputbox" placeholder="type" list="transfer type"/></label>
+        <datalist id="transfer type">
+            <option value = "customer transfer">
+            <option value = "Bank transfer">
+        </datalist>
+        <br>
+
+        <label>Message<br> <input class="inputbox" placeholder ="message" list="Message"/></label>
+        <datalist id="Message">
+               
+            <option value = "CHQB">
+            <option value = "CORT">
+            <option value = "HOLD">
+            <option value = "INTC">
+            <option value = "PHOB">
+            <option value = "PHOI">
+            <option value = "PHON">            
+            <option value = "REPA">
+            <option value = "SDVA">
+        
+            </datalist>
+        <br>
+
+        <label>Amount<br> <input class ="inputbox" type="number" placeholder="Enter amount" /></label><br>
+
+        <label>Transfer fee<br></label>
+        <button onclick="myfunction()"class="transfer">Transfer</button>
+        <script>
+            function myfunction () {
+                alert("successful");
+                
+            }
+            
+        </script>
+
+
+    </form>
+    
+   
+    
+</div>
+    
+</body>
+</html>
