@@ -36,32 +36,65 @@
     <div class="user">
         <h1>Enter Reciever Details</h1>
 
-       <form action="transaction.html"> 
-            <div class="input">
-               Bic<br>
-            </div>
-            <div class="inputbox">
-               
-                <input type ="text">
-            </div><br>
-            <div class="input">
-              Benificiary Name<br>
-             </div>
-             <div class="inputbox">
-                
-                 <input type ="text">
-             </div><br>
-            <div class="input">
-                Benificiary Account number<br>
-             </div>
-             <div class="inputbox">
-                
-                 <input type ="number">
-             </div>
+       <form action=""> 
+        <label>Bic<br> <input class ="inputbox" type="text" placeholder="bic" /></label><br>
+
+        <br><label>Benificiary Name<br> <input class ="inputbox" type="text" placeholder="Reciever Name" /></label><br>
+
+        <br><label>Benificiary Account number<br> <input class ="inputbox" type="number" placeholder="Reciever Account number" /></label><br>
+            
              <input type="Submit" value="Submit">
             
 
         </form>
     </div>
+
+
+    <div class = "user">
+      
+           <form action=""> 
+            <label>transfer Type<br> <input class="inputbox" placeholder="type" list="transfer type"/></label>
+                <datalist id="transfer type">
+                    <option value = "customer transfer">
+                    <option value = "Bank transfer">
+                </datalist>
+                <br>
+        
+                <br><label>Message<br>  <input class="inputbox" placeholder ="message" list="Message"/></label>
+                <datalist id="Message">
+                       
+                    <option value = "CHQB">
+                    <option value = "CORT">
+                    <option value = "HOLD">
+                    <option value = "INTC">
+                    <option value = "PHOB">
+                    <option value = "PHOI">
+                    <option value = "PHON">            
+                    <option value = "REPA">
+                    <option value = "SDVA">
+                
+                    </datalist>
+                <br>
+        
+                <br><label>Amount<br> <input class ="inputbox" type="number" placeholder="Enter amount" /></label><br>
+        
+                <br><label>Transfer fee<br></label>
+                <button onclick="myfunction()"class="transfer">Transfer</button>
+                <script>
+                    function myfunction () {
+                        alert("successful");
+                        
+                    }
+                    
+                </script>
+        
+        
+            </form>
+            
+           
+            
+        </div>
+
+
 </body>
 </html>

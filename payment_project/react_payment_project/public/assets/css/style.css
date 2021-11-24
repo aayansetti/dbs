@@ -43,6 +43,7 @@ header .logo h2{
 header .date{
     margin-left: 65rem;
     margin-top: 0.9rem;
+    
 }
 
 .user h1{
@@ -50,23 +51,25 @@ header .date{
     text-align: center;
 }
 
-.user{
+.user,
+.usermargin
+{
    
     margin: 5rem;
     text-align: left;
 
 }
+/* label{
+    width: 180px;
+    clear:left;
+    text-align: right;
+    padding-right: 10px;
+} */
 
-.user  .input{
-    padding: 8px 8px;
-    text-align: left;
-    margin-bottom: .2rem;
-    
-    
 
-}
 
 .user  .inputbox{
+    
     padding: 12px 20px;
     width: 25%;
     margin: 8px 0;
@@ -74,35 +77,27 @@ header .date{
     border-radius: 10px;
     box-sizing: border-box;
     
+    
    
 }
 
-input[type="Submit"]{
+input[type="Submit"],
+.transfer 
+{
     color: white;
     background-color: red;
     padding: 12px 20px;
     margin: 8px 0;
     border-radius: 10px;
     cursor: pointer;
-    margin-left: 5rem;
+    /* margin-left: 5rem; */
 }
-input[type="Submit"]:hover{
+input[type="Submit"]:hover,
+.transfer:hover
+{
     background-color: black;
 }
 
-.usermargin{
-    margin: 10rem;
-}
-
-.transfer{
-    color: white;
-    background-color: red;
-    padding: 12px 20px;
-    margin: 8px 0;
-    border-radius: 10px;
-    cursor: pointer;
-    margin-left: 5rem;
-}
-.transfer:hover{
-    background-color: black;
-}
+/* .usermargin{
+    margin: 5rem;
+} */
