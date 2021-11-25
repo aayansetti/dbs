@@ -98,12 +98,6 @@ header .date{
   text-align: left;
 
 }
-/* label{
-  width: 180px;
-  clear:left;
-  text-align: right;
-  padding-right: 10px;
-} */
 
 
 
@@ -137,6 +131,3 @@ input[type="Submit"]:hover,
   background-color: black;
 }
 
-/* .usermargin{
-  margin: 5rem;
-} */
