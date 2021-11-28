@@ -4,7 +4,7 @@ import './App.css';
 import FooterComponent from './components/FooterComponent';
 import HeaderComponent from './components/HeaderComponent';
 import Landing from './components/Landing';
-import Transaction from './components/Transaction';
+// import Transaction from './components/Transaction';
 
 
 function App() {
@@ -15,7 +15,7 @@ function App() {
         <div className="container">
           <Switch>
             <Route exact path="/" component={Landing} />
-            <Route path = "/transaction" component={Transaction}/>
+            {/* <Route path = "/transaction" component={Transaction}/> */}
           </Switch>
         </div>
         <FooterComponent />

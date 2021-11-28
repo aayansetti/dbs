@@ -1,6 +1,8 @@
-import React, { useState } from 'react'
-import { Link } from 'react-router-dom';
+import axios from 'axios';
+import React, { useState} from 'react'
+import { Link, useLocation } from 'react-router-dom';
 import PopUp from './PopUp';
+
 
 function Transaction() {
     const [isOpen, setIsOpen] = useState(false);
@@ -8,6 +10,35 @@ function Transaction() {
     const togglePopup = () => {
         setIsOpen(!isOpen);
     }
+    const [bankname,setBankName]=useState("");
+    const [transferfee,setTransferFee]=useState("");
+const handleBank = (e) =>{
+    console.log(e.target.name)
+    if(e.target.name === "bic"){
+        // setCustomerId(e.target.value);
+        axios.get( "http://localhost:8094/api/v1/bank/" + e.target.value)
+        .then(response => {
+            // console.log(response.data)
+           setBankName(response.data.bankname)
+        })
+        
+    }
+}
+
+// const{customerid}= useLocation();
+// useEffect(() => {
+//     console.log(customerid);
+// }, [])
+const handleAmount =(e) =>{
+    if(e.target.name === "Amount"){
+        setTransferFee(e.target.value*(0.0025))
+        // axios.post("http://localhost:8094/api/v1/customer/"+ customerid)
+
+    }
+}
+
+
+
     return (
         <div class="root">
             <div className="row">
@@ -21,8 +52,13 @@ function Transaction() {
                                     placeholder="Enter bic code"
                                     name="bic"
                                     className="form-control"
+                                    onChange={handleBank}
                                 />
                             </div>
+                            <div className="form-group mb-3">
+                                <label className="form-label">Benificiary Bank Name</label>
+                                <p>{bankname}</p>
+                                </div>
                             <div className="form-group mb-3">
                                 <label className="form-label">Benificiary Name</label>
                                 <input
@@ -32,6 +68,7 @@ function Transaction() {
                                     className="form-control"
                                 />
                             </div>
+                           
                             <div className="form-group mb-3">
                                 <label className="form-label">Benificiary Account Number</label>
                                 <input
@@ -74,17 +111,18 @@ function Transaction() {
                                     placeholder="Amount"
                                     name="Amount"
                                     className="form-control"
+                                    onChange={handleAmount}
                                 />
                             </div>
 
                             <div className="form-group mb-3">
                                 <label className="form-label">Transfer fee</label>
-                                <input
-                                    type="number"
-                                    placeholder="Traansfer fee"
-                                    name="Traansfer fee"
-                                    className="form-control"
-                                />
+                                <p>{transferfee}</p>
+                            </div>
+                        
+                            <div className="form-group mb-3">
+                                <label className="form-label">Clear Balance</label>
+                                
                             </div>
                             <div>
                                 <button type="button" class="btn btn-dark" onClick={togglePopup} style={{ marginBottom: "5rem" }}>Transfer</button>
