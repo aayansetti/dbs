@@ -5,8 +5,9 @@ import DatePicker from 'react-datetime' ;
 import axios from 'axios';
 // import moment from 'moment';
 import 'react-datetime/css/react-datetime.css';
-
+// import { useForm } from 'react-hook-form';
 import raw from './sdnlist.txt';
+// import { registerLocale } from 'react-datepicker';
 
 function Landing() {
 
@@ -52,6 +53,7 @@ const handleBank = (e) =>{
         .then(response => {
             console.log(response.data)
            setBankName(response.data.bankname)
+           console.log(bankname)
         })
         .catch(error => {
             console.log(error)
@@ -166,7 +168,10 @@ const checksdnlist =(e)=>{
 
    
 }
-
+const[accnnum,setAccnNum]=useState("")
+const handlechangeaccountnumber=(e)=>{
+    setAccnNum(e.target.value)
+}
 
 
 
@@ -200,6 +205,7 @@ const checksdnlist =(e)=>{
                                     name="customerid"
                                     className="form-control"
                                     onChange={handleChange}
+                                    // ref={register({required:true})}
                                 />
                             </div>
                             <div className="form-group mb-3">
@@ -250,6 +256,7 @@ const checksdnlist =(e)=>{
                                     placeholder="Reciever Account Number"
                                     name="Reciever Account Number"
                                     className="form-control"
+                                    onChange={handlechangeaccountnumber}
                                     
                                 />
                             </div>
@@ -309,7 +316,12 @@ const checksdnlist =(e)=>{
                                 {isOpen && <PopUp
                                     content={<>
                                         <b style={{ marginLeft: "5rem" }}>Transfer Successful</b><br />
-                                        <button className="btn btn-dark">ok</button>
+                                        <b>Reciever Name:{name}</b><br/>
+                                        <b>Reciever AccountNumber: {accnnum}</b><br/>
+                                        <b>Reciever Bank:{bankname}</b><br/>
+                                        <b>Transfer Amount:{amount*1.0025}</b><br/>
+                                        <b>Remaining balance:{clearbalance}</b><br/>
+                                        <button className="btn btn-dark">ok</button><br/>
                                     </>}
                                     handleClose={togglePopup}
                                 />}
