@@ -61,68 +61,68 @@ const handleBank = (e) =>{
 }
 const handleAmount=(e) =>{
     setAmount(e.target.value)
-}
-
-const checkData =(e) =>{
-    setTransferFee(amount*0.0025)
-    const Amount=parseFloat(amount)+parseFloat(transferfee)
-
-    if(parseFloat(amount)>=parseFloat(balance)){
-        
+    console.log(amount)
+    if(balance<e.target.value*1.0025){
         if(overdraft==="yes"|| overdraft==="Yes"|| overdraft==="YES"){
-            setClearBalance(parseFloat(balance)-parseFloat(Amount))
+            setTransferFee(e.target.value*0.0025)
+            setClearBalance(balance-(e.target.value*1.0025))
+            document.getElementById("funds").innerHTML = "";
+
         }
         else{
             console.log("no funds")
-            alert("No Required Funds")
+            setTransferFee("")
+            setClearBalance("")
+            document.getElementById("funds").innerHTML = "no funds!!!!!!!!!";
         }
+
     }
     else{
+        document.getElementById("funds").innerHTML = "";
+        setTransferFee(e.target.value*0.0025)
+        setClearBalance(balance-e.target.value*1.0025)
 
-        // const Amount = parseFloat(amount)+parseFloat(transferfee)
-        console.log(amount)
-        setClearBalance(parseFloat(balance)-parseFloat(Amount))
     }
+}
 
-    fetch(raw).then(r=>r.text()).then(text=>{
-        console.log(name)
-        if(text.search(name)>-1){
-            console.log("success")
-            alert("reciever is in sdnlist:")
-        }
-        else{
-            console.log("sorry")
-        }
-    });
-
+const onchnagetransfertype =(e)=>{
+ let text=e.target.value
+ console.log(text)
 if(accountholdername.search("HDFC BANK")>-1)
-// //|| accountHolderName==="HDFCBANKC1A" || accountHolderName==="HDFCBANKH0A" )
 {
-console.log("good")
-if(transfertype==="customertransfer")
+    setTransferType(text)
+    console.log(transfertype)
+
+if(text==="customertransfer")
 {
-alert("cant send")
+    document.getElementById("type").innerHTML = "Invalid type";
+
 }
 else{
-console.log("send")
+
+document.getElementById("type").innerHTML = "";
+
 }
 }
 else
 {
-if(transfertype==="Banktransfer")
+    setTransferType(text)
+if(text==="Banktransfer")
 {
-alert("cannot tranfer to bank")
+
+document.getElementById("type").innerHTML = "Invalid type"
+
 }
 else{
-console.log("success send")
+    document.getElementById("type").innerHTML = "";
 }
 }
-
-
-
-
 }
+
+
+
 const updateDatabase =(e)=>{
+    setIsOpen(!isOpen);
     e.preventDefault();
     const balance=clearbalance
     console.log(clearbalance)
@@ -137,9 +137,7 @@ const updateDatabase =(e)=>{
             .catch(error => {
                 console.log(error)
             })
-    }
-
-    
+    }   
 
 }
 // const yesterday =moment().
@@ -148,16 +146,25 @@ const customdates =  current =>{
 }
 const [name,setName] = useState("")
 const checksdnlist =(e)=>{
-    setName(e.target.value)
-    // fetch(raw).then(r=>r.text()).then(text=>{
-    //     console.log(e.target.value)
-    //     if(text.search(e.target.value)){
-    //         console.log("success")
-    //     }
-    //     else{
-    //         console.log("sorry")
-    //     }
-    // });
+    let sdnperson = e.target.value
+    console.log(sdnperson)
+    fetch(raw).then(r=>r.text()).then(text=>{
+        setName(sdnperson)
+        console.log(name)
+        // console.log(name)
+        if(text.search(name)>-1){
+            console.log("success")
+            document.getElementById("sdnlist").innerHTML = "Reciever is in sdnlist";
+        }
+        else{
+            console.log("sorry")
+            document.getElementById("sdnlist").innerHTML = "";
+
+        }
+    });
+
+
+   
 }
 
 
@@ -188,7 +195,7 @@ const checksdnlist =(e)=>{
                             <div className="form-group mb-3">
                                 <label className="form-label">AccountNumber</label>
                                 <input
-                                    type="number"
+                                    type="text"
                                     placeholder="Account number"
                                     name="customerid"
                                     className="form-control"
@@ -225,6 +232,7 @@ const checksdnlist =(e)=>{
                                 </div>
                             <div className="form-group mb-3">
                                 <label className="form-label">Benificiary Name</label>
+                                <p id="sdnlist" style={{color:"red"}}></p>
                                 <input
                                     type="text"
                                     placeholder="Reciever Name"
@@ -238,21 +246,22 @@ const checksdnlist =(e)=>{
                             <div className="form-group mb-3">
                                 <label className="form-label">Benificiary Account Number</label>
                                 <input
-                                    type="number"
+                                    type="text"
                                     placeholder="Reciever Account Number"
                                     name="Reciever Account Number"
                                     className="form-control"
+                                    
                                 />
                             </div>
                             <div className="form-group mb-3">
                                 <label className="form-label">Transfer Type</label>
-                                <input className="form-control" list="transfer type" id="transfertype"
-                                    placeholder="Transfer type" 
-                                    onChange={(e)=>setTransferType(e.target.value)}/>
-                                <datalist id="transfer type">
-                                    <option value="customertransfer" />
-                                    <option value="Banktransfer" />
-                                </datalist>
+                                <p id="type" style={{color:"red"}}></p>
+                                <select id="transfer type" className="form-control"placeholder="transfer type"
+                                 onChange={onchnagetransfertype}>
+                                     <option value="">Transfer type</option>
+                                    <option value="customertransfer">customertransfer</option>
+                                    <option value="Banktransfer">Banktransfer</option>
+                                </select>
                             </div>
                             <div className="form-group mb-3">
                                 <label className="form-label">Message</label>
@@ -274,12 +283,13 @@ const checksdnlist =(e)=>{
                             <div className="form-group mb-3">
                                 <label className="form-label">Amount</label>
                                 <input
-                                    type="number"
+                                    type="text"
                                     placeholder="Amount"
                                     name="Amount"
                                     className="form-control"
                                     onChange={handleAmount}
                                 />
+                                <p id="funds" style={{color:"red"}}></p>
                             </div>
 
                             <div className="form-group mb-3">
@@ -291,11 +301,11 @@ const checksdnlist =(e)=>{
                                 <label className="form-label">Clear Balance</label>
                                 <p>{clearbalance}</p>
                             </div>
-                            <button type="button" className="btn btn-dark" onClick={checkData}>Check</button>
-                            <button className="btn btn-dark" onClick={updateDatabase}>Update</button>
+                            {/* <button type="button" className="btn btn-dark" onClick={checkData}>Check</button> */}
+                            {/* <button className="btn btn-dark" onClick={updateDatabase}>Update</button> */}
 
                             <div>
-                                <button type="button" className="btn btn-dark" onClick={togglePopup} style={{ marginBottom: "5rem" }}>Transfer</button>
+                                <button type="button" className="btn btn-dark" onClick={updateDatabase} style={{ marginBottom: "5rem" }}>Transfer</button>
                                 {isOpen && <PopUp
                                     content={<>
                                         <b style={{ marginLeft: "5rem" }}>Transfer Successful</b><br />

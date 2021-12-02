@@ -1,10 +1,12 @@
 import axios from 'axios';
 import React, { useState} from 'react'
-import { Link, useLocation } from 'react-router-dom';
+import { Link} from 'react-router-dom';
 import PopUp from './PopUp';
-
+// import props from 'prop-types';
 
 function Transaction() {
+    console.log("transaction")
+   
     const [isOpen, setIsOpen] = useState(false);
 
     const togglePopup = () => {
@@ -36,10 +38,13 @@ const handleAmount =(e) =>{
 
     }
 }
-
+const About =(props)=>{
+    console.log("about",props.location.aboutProps)
+}
 
 
     return (
+
         <div class="root">
             <div className="row">
                 <div className="card col-md-7 offset-md-3 offset-md-3">
@@ -104,6 +109,7 @@ const handleAmount =(e) =>{
 
                                 </datalist>
                             </div>
+                            
                             <div className="form-group mb-3">
                                 <label className="form-label">Amount</label>
                                 <input
@@ -114,7 +120,7 @@ const handleAmount =(e) =>{
                                     onChange={handleAmount}
                                 />
                             </div>
-
+                            <button onClick={About}>hello</button>
                             <div className="form-group mb-3">
                                 <label className="form-label">Transfer fee</label>
                                 <p>{transferfee}</p>
@@ -138,7 +144,7 @@ const handleAmount =(e) =>{
                     </div>
                 </div>
             </div>
-
+                                        
         </div>
     )
 }
